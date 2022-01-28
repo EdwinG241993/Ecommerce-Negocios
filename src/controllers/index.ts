@@ -9,3 +9,8 @@ export * from './cliente-factura.controller';
 export * from './cliente-direccion.controller';
 export * from './cliente-usuario-cliente.controller';
 export * from './usuario-cliente-cliente.controller';
+export * from './categoria.controller';
+export * from './marca.controller';
+export * from './producto.controller';
+export * from './cliente.controller';
+export * from './factura.controller';
