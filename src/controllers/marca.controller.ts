@@ -17,134 +17,134 @@ import {
   requestBody,
   response,
 } from '@loopback/rest';
-import {Categoria} from '../models';
-import {CategoriaRepository} from '../repositories';
+import {Marca} from '../models';
+import {MarcaRepository} from '../repositories';
 
 export class MarcaController {
   constructor(
-    @repository(CategoriaRepository)
-    public categoriaRepository : CategoriaRepository,
+    @repository(MarcaRepository)
+    public marcaRepository : MarcaRepository,
   ) {}
 
-  @post('/categorias')
+  @post('/marcas')
   @response(200, {
-    description: 'Categoria model instance',
-    content: {'application/json': {schema: getModelSchemaRef(Categoria)}},
+    description: 'Marca model instance',
+    content: {'application/json': {schema: getModelSchemaRef(Marca)}},
   })
   async create(
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(Categoria, {
-            title: 'NewCategoria',
+          schema: getModelSchemaRef(Marca, {
+            title: 'NewMarca',
             exclude: ['id'],
           }),
         },
       },
     })
-    categoria: Omit<Categoria, 'id'>,
-  ): Promise<Categoria> {
-    return this.categoriaRepository.create(categoria);
+    marca: Omit<Marca, 'id'>,
+  ): Promise<Marca> {
+    return this.marcaRepository.create(marca);
   }
 
-  @get('/categorias/count')
+  @get('/marcas/count')
   @response(200, {
-    description: 'Categoria model count',
+    description: 'Marca model count',
     content: {'application/json': {schema: CountSchema}},
   })
   async count(
-    @param.where(Categoria) where?: Where<Categoria>,
+    @param.where(Marca) where?: Where<Marca>,
   ): Promise<Count> {
-    return this.categoriaRepository.count(where);
+    return this.marcaRepository.count(where);
   }
 
-  @get('/categorias')
+  @get('/marcas')
   @response(200, {
-    description: 'Array of Categoria model instances',
+    description: 'Array of Marca model instances',
     content: {
       'application/json': {
         schema: {
           type: 'array',
-          items: getModelSchemaRef(Categoria, {includeRelations: true}),
+          items: getModelSchemaRef(Marca, {includeRelations: true}),
         },
       },
     },
   })
   async find(
-    @param.filter(Categoria) filter?: Filter<Categoria>,
-  ): Promise<Categoria[]> {
-    return this.categoriaRepository.find(filter);
+    @param.filter(Marca) filter?: Filter<Marca>,
+  ): Promise<Marca[]> {
+    return this.marcaRepository.find(filter);
   }
 
-  @patch('/categorias')
+  @patch('/marcas')
   @response(200, {
-    description: 'Categoria PATCH success count',
+    description: 'Marca PATCH success count',
     content: {'application/json': {schema: CountSchema}},
   })
   async updateAll(
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(Categoria, {partial: true}),
+          schema: getModelSchemaRef(Marca, {partial: true}),
         },
       },
     })
-    categoria: Categoria,
-    @param.where(Categoria) where?: Where<Categoria>,
+    marca: Marca,
+    @param.where(Marca) where?: Where<Marca>,
   ): Promise<Count> {
-    return this.categoriaRepository.updateAll(categoria, where);
+    return this.marcaRepository.updateAll(marca, where);
   }
 
-  @get('/categorias/{id}')
+  @get('/marcas/{id}')
   @response(200, {
-    description: 'Categoria model instance',
+    description: 'Marca model instance',
     content: {
       'application/json': {
-        schema: getModelSchemaRef(Categoria, {includeRelations: true}),
+        schema: getModelSchemaRef(Marca, {includeRelations: true}),
       },
     },
   })
   async findById(
     @param.path.number('id') id: number,
-    @param.filter(Categoria, {exclude: 'where'}) filter?: FilterExcludingWhere<Categoria>
-  ): Promise<Categoria> {
-    return this.categoriaRepository.findById(id, filter);
+    @param.filter(Marca, {exclude: 'where'}) filter?: FilterExcludingWhere<Marca>
+  ): Promise<Marca> {
+    return this.marcaRepository.findById(id, filter);
   }
 
-  @patch('/categorias/{id}')
+  @patch('/marcas/{id}')
   @response(204, {
-    description: 'Categoria PATCH success',
+    description: 'Marca PATCH success',
   })
   async updateById(
     @param.path.number('id') id: number,
     @requestBody({
       content: {
         'application/json': {
-          schema: getModelSchemaRef(Categoria, {partial: true}),
+          schema: getModelSchemaRef(Marca, {partial: true}),
         },
       },
     })
-    categoria: Categoria,
+    marca: Marca,
   ): Promise<void> {
-    await this.categoriaRepository.updateById(id, categoria);
+    await this.marcaRepository.updateById(id, marca);
   }
 
-  @put('/categorias/{id}')
+  @put('/marcas/{id}')
   @response(204, {
-    description: 'Categoria PUT success',
+    description: 'Marca PUT success',
   })
   async replaceById(
     @param.path.number('id') id: number,
-    @requestBody() categoria: Categoria,
+    @requestBody() marca: Marca,
   ): Promise<void> {
-    await this.categoriaRepository.replaceById(id, categoria);
+    await this.marcaRepository.replaceById(id, marca);
   }
 
-  @del('/categorias/{id}')
+  @del('/marcas/{id}')
   @response(204, {
-    description: 'Categoria DELETE success',
+    description: 'Marca DELETE success',
   })
   async deleteById(@param.path.number('id') id: number): Promise<void> {
-    await this.categoriaRepository.deleteById(id);
+    await this.marcaRepository.deleteById(id);
   }
 }
