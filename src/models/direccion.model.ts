@@ -33,6 +33,10 @@ export class Direccion extends Entity {
   })
   numero_calle: string;
 
+  @property({
+    type: 'number',
+  })
+  clienteId?: number;
 
   constructor(data?: Partial<Direccion>) {
     super(data);

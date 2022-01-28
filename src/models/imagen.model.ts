@@ -21,6 +21,10 @@ export class Imagen extends Entity {
   })
   descripcion: string;
 
+  @property({
+    type: 'number',
+  })
+  productoId?: number;
 
   constructor(data?: Partial<Imagen>) {
     super(data);

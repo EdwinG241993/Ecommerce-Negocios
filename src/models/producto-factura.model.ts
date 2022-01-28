@@ -21,6 +21,15 @@ export class ProductoFactura extends Entity {
   })
   precio_unidad: number;
 
+  @property({
+    type: 'number',
+  })
+  facturaId?: number;
+
+  @property({
+    type: 'number',
+  })
+  productoId?: number;
 
   constructor(data?: Partial<ProductoFactura>) {
     super(data);
