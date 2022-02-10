@@ -14,3 +14,4 @@ export * from './marca.controller';
 export * from './producto.controller';
 export * from './cliente.controller';
 export * from './factura.controller';
+export * from './cargar-archivos.controller';
